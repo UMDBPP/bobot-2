@@ -2499,6 +2499,10 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid b0d5038a-d23a-4293-80a2-353156d06018)
   )
+  (text "lol michael was here" (at 209.55 107.95 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid b9382aec-f9f0-47cd-8046-7bd18d491aa0)
+  )
   (text "This resistor \nensures that \nwe don't \noverdrive \nthe LED"
     (at 173.99 50.8 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
