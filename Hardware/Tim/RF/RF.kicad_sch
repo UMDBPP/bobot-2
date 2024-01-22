@@ -1441,7 +1441,7 @@
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 20574b61-a774-41bd-baf4-be331275d5b6)
   )
-  (hierarchical_label "SPI0_CS" (shape input) (at 209.55 95.25 0) (fields_autoplaced)
+  (hierarchical_label "SPI0_CS_RAD" (shape input) (at 209.55 95.25 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 58d91a1f-736f-4f86-8b98-4e9d7aaf45e5)
   )
