@@ -1,4 +1,4 @@
-23111145679882967
+23116386572658952
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -154,6 +154,13 @@ LT8648SJV-PBF
 46
 46
 BPPlib
+LT8653SIV
+
+LT8653SIV-PBF 
+0
+25
+25
+BPPlib
 LTC3118
 
 LTC3118EUFD-PBF 
@@ -245,12 +252,26 @@ PKMCS0909E4000-R1
 2
 2
 BPPlib
+QFN-20_UF_LIT
+
+LTC2952CUF-PBF 
+0
+21
+21
+BPPlib
 RP2040-QFN-56
 QFN, 56 Pin (http://www.cypress.com/file/416486/download#page=40), generated with kicad-footprint-generator ipc_dfn_qfn_generator.py
 QFN DFN_QFN
 0
 70
 57
+BPPlib
+RUM0016B
+
+ADS8681IRUMR 
+0
+22
+18
 BPPlib
 SEIKO_ML414H_IV01E
 
