@@ -2,3 +2,12 @@
 	path = Hardware/kicad-lib
 	url = https://github.com/UMDBPP/kicad-lib.git
 	branch = main
+[submodule "Software/Tim/Elect_test/Libraries/quadrature-decoder"]
+	path = Software/Tim/Elect_test/Libraries/quadrature-decoder
+	url = https://github.com/p-o-l-e/quadrature-decoder.git
+[submodule "Software/Tim/Elect_test/Libraries/no-OS-FatFS-SD-SPI-RPi-Pico"]
+	path = Software/Tim/Elect_test/Libraries/no-OS-FatFS-SD-SPI-RPi-Pico
+	url = https://github.com/carlk3/no-OS-FatFS-SD-SPI-RPi-Pico.git
+[submodule "Software/Tim/Elect_test/Libraries/libnmea"]
+	path = Software/Tim/Elect_test/Libraries/libnmea
+	url = https://github.com/jacketizer/libnmea.git

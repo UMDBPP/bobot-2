@@ -40,6 +40,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/Tim/Elect_test/build/pico-sdk/cmake_install.cmake")
+  include("C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/Tim/Elect_test/build/build/cmake_install.cmake")
 
 endif()
 

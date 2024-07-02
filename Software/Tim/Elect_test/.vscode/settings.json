@@ -25,6 +25,11 @@
   "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
   "files.associations": {
     "stdlib.h": "c",
-    "binary_info.h": "c"
+    "binary_info.h": "c",
+    "stdio.h": "c",
+    "i2c.h": "c",
+    "main_functions.h": "c",
+    "quadrature_decoder.pio.h": "c",
+    "string.h": "c"
   }
 }

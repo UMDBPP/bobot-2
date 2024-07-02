@@ -1,4 +1,5 @@
 C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/Tim/Elect_test/build/CMakeFiles/main.dir
+C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/Tim/Elect_test/build/CMakeFiles/main_quadrature_decoder_pio_h.dir
 C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/Tim/Elect_test/build/CMakeFiles/edit_cache.dir
 C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/Tim/Elect_test/build/CMakeFiles/rebuild_cache.dir
 C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/Tim/Elect_test/build/pico-sdk/CMakeFiles/edit_cache.dir
@@ -167,3 +168,5 @@ C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/
 C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/Tim/Elect_test/build/pico-sdk/src/rp2040/hardware_structs/CMakeFiles/rebuild_cache.dir
 C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/Tim/Elect_test/build/pico-sdk/docs/CMakeFiles/edit_cache.dir
 C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/Tim/Elect_test/build/pico-sdk/docs/CMakeFiles/rebuild_cache.dir
+C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/Tim/Elect_test/build/build/CMakeFiles/edit_cache.dir
+C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/Tim/Elect_test/build/build/CMakeFiles/rebuild_cache.dir
