@@ -1,0 +1,39 @@
+char *string;
+
+    char ch;
+    
+
+    while (true) {
+        string = (char*)malloc(128);
+        for(int i = 0;i < 128; i++){
+            string[i] = uart_getc(uart0);
+        }
+
+        int start = 0;
+
+        while(1){
+            if(string[start] == '$'){
+                break;
+            }
+            start = start + 1;
+        }
+        int end = start + 1;
+        while(1){
+            if((string[end] == '\r')||(string[end] == '\n')){
+                break;
+            }
+            end = end + 1;
+        }
+
+        char *stringnew;
+        stringnew = malloc(end-start+1);
+        int j = 0;
+        for(int i = start;i<=end;i++){
+            stringnew[j] = string[i];
+            j = j + 1;
+        }
+        free(string);
+        printf("%s",stringnew);
+        free(stringnew);
+        sleep_ms(1000);
+    }
