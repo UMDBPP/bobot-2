@@ -789,8 +789,8 @@
 					"source" : "build/pico-sdk/src/rp2_common/tinyusb",
 					"targetIndexes" : 
 					[
-						6,
-						7
+						7,
+						8
 					]
 				},
 				{
@@ -1021,14 +1021,18 @@
 				},
 				{
 					"build" : "build",
-					"jsonFile" : "directory-build-Debug-d7c4911cbe15ecf3c6ec.json",
+					"jsonFile" : "directory-build-Debug-55f47eb7817ccd24854c.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.13"
 					},
 					"parentIndex" : 0,
 					"projectIndex" : 0,
-					"source" : "Libraries/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI"
+					"source" : "Libraries/no-OS-FatFS-SD-SDIO-SPI-RPi-Pico/src",
+					"targetIndexes" : 
+					[
+						6
+					]
 				}
 			],
 			"name" : "Debug",
@@ -1048,7 +1052,8 @@
 					"targetIndexes" : 
 					[
 						4,
-						5
+						5,
+						6
 					]
 				},
 				{
@@ -1143,8 +1148,8 @@
 						1,
 						2,
 						3,
-						6,
-						7
+						7,
+						8
 					]
 				}
 			],
@@ -1181,15 +1186,22 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "main::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-main-Debug-39c98395a8d2af837d8b.json",
+					"jsonFile" : "target-main-Debug-d36dab1e51d81ca6fb38.json",
 					"name" : "main",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "main_quadrature_decoder_pio_h::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-main_quadrature_decoder_pio_h-Debug-dd1b88dac10cdf1fa598.json",
+					"jsonFile" : "target-main_quadrature_decoder_pio_h-Debug-788fb4646f67c833ab00.json",
 					"name" : "main_quadrature_decoder_pio_h",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 81,
+					"id" : "no-OS-FatFS-SD-SDIO-SPI-RPi-Pico_rp2040_sdio_pio_h::@039278ea0a093c55e3e1",
+					"jsonFile" : "target-no-OS-FatFS-SD-SDIO-SPI-RPi-Pico_rp2040_sdio_pio_h-Debug-5e63ad116ad36509b1ab.json",
+					"name" : "no-OS-FatFS-SD-SDIO-SPI-RPi-Pico_rp2040_sdio_pio_h",
 					"projectIndex" : 0
 				},
 				{
