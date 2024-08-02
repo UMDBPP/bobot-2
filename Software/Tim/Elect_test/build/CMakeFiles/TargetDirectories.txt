@@ -168,5 +168,6 @@ C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/
 C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/Tim/Elect_test/build/pico-sdk/src/rp2040/hardware_structs/CMakeFiles/rebuild_cache.dir
 C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/Tim/Elect_test/build/pico-sdk/docs/CMakeFiles/edit_cache.dir
 C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/Tim/Elect_test/build/pico-sdk/docs/CMakeFiles/rebuild_cache.dir
+C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/Tim/Elect_test/build/build/CMakeFiles/no-OS-FatFS-SD-SDIO-SPI-RPi-Pico_rp2040_sdio_pio_h.dir
 C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/Tim/Elect_test/build/build/CMakeFiles/edit_cache.dir
 C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/Tim/Elect_test/build/build/CMakeFiles/rebuild_cache.dir

@@ -18,8 +18,9 @@ add_executable(main
     main.cpp
     ../Elect_test/Libraries/quadrature-decoder/quadrature_decoder.c
     ../Elect_test/Libraries/rp2040-drf1262-lib/SX1262.cpp
+    hw_config.c
 )
-add_subdirectory(../Elect_test/Libraries/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI build)
+add_subdirectory(../Elect_test/Libraries/no-OS-FatFS-SD-SDIO-SPI-RPi-Pico/src build)
 
 pico_generate_pio_header(main ${CMAKE_CURRENT_LIST_DIR}/Libraries/quadrature-decoder/quadrature_decoder.pio)
 
@@ -34,7 +35,7 @@ target_link_libraries(
     hardware_dma
     hardware_pwm
     hardware_irq
-    FatFs_SPI
+    no-OS-FatFS-SD-SDIO-SPI-RPi-Pico
     )
 
 pico_enable_stdio_usb(main 1)

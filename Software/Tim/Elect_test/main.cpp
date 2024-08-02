@@ -6,11 +6,6 @@
 #include "pico/binary_info.h"
 
 
-void init_pres(uint16_t *C1, uint16_t *C2, uint16_t *C3, uint16_t *C4, uint16_t *C5, uint16_t *C6);
-void read_pres(uint16_t C1, uint16_t C2, uint16_t C3, uint16_t C4, uint16_t C5, uint16_t C6, int32_t *TEMP, int32_t *P);
-void init_spi();
-
-
 int main() {
     //Variables
     uint16_t C1;
@@ -22,17 +17,16 @@ int main() {
     int32_t TEMP;
     int32_t P;
 
-    uint8_t *buffer_gps;
-    buffer_gps = (uint8_t *)malloc(512);
     
+    //Get slice num for PWM
     slice_num = PWM_init();
 
-    pwm_set_enabled(slice_num, true);
-    stdio_init_all();
-    init_pres(&C1, &C2, &C3, &C4, &C5, &C6);
-    init_gps();
+    pwm_set_enabled(slice_num, true);//enable PWM
+    stdio_init_all();//Initalize IO
+    init_pres(&C1, &C2, &C3, &C4, &C5, &C6);//Initalize pressure temperature
+    init_gps();//Initalize GPS
     sleep_ms(3000);
-    coder1_index = quad_encoder_init1();
+    coder1_index = quad_encoder_init1();//Initalize encoders
     coder2_index = quad_encoder_init2();
     
 
@@ -42,15 +36,18 @@ int main() {
     radio.debug_msg_en = 1;
 
     radio.radio_init();
+    //SD card object
+    FATFS fs;
+    FIL fil;
+    FRESULT fr;
+    const char* const filename = "Bobot-2-data.txt";
+    init_sd(fs, fil, &fr, filename);
+       
 
     while (1){
-        printf("Transmit Test\n");
-
-        char data[] = "sendx";
-
-        data[4] = (char)get_rand_32();
-
-        radio.radio_send((uint8_t *)data, sizeof(data));
+        read_gps();
+        //read_pres(C1, C2, C3, C4, C5, C6, &TEMP, &P);
+        //sd_write(fs, fil, &fr, filename, P, TEMP);
         sleep_ms(1000);
     }
 
