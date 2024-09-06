@@ -31,7 +31,7 @@ int main() {
     
 
     //gpio_set_irq_callback(&gpio_callback);
-    sleep_ms(5000);
+    sleep_ms(5001);
     // enables debug print statements in radio methods
     radio.debug_msg_en = 1;
 

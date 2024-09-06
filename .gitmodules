@@ -11,6 +11,3 @@
 [submodule "Software/Tim/Elect_test/Libraries/rp2040-drf1262-lib"]
 	path = Software/Tim/Elect_test/Libraries/rp2040-drf1262-lib
 	url = https://github.com/UMDBPP/rp2040-drf1262-lib.git
-[submodule "Software/Tim/Elect_test/build/pico-sdk"]
-	path = Software/Tim/Elect_test/build/pico-sdk
-	url = https://github.com/raspberrypi/pico-sdk.git
