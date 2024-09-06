@@ -14,6 +14,7 @@
 
 #define QuadratureDecoder_wrap_target 16
 #define QuadratureDecoder_wrap 27
+#define QuadratureDecoder_pio_version 0
 
 #define QuadratureDecoder_offset_start 16u
 
@@ -55,6 +56,10 @@ static const struct pio_program QuadratureDecoder_program = {
     .instructions = QuadratureDecoder_program_instructions,
     .length = 28,
     .origin = 0,
+    .pio_version = 0,
+#if PICO_PIO_VERSION > 0
+    .used_gpio_ranges = 0x0
+#endif
 };
 
 static inline pio_sm_config QuadratureDecoder_program_get_default_config(uint offset) {

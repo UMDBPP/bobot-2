@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/Tim/Elect_test
+# Install script for directory: C:/Users/Herman/Documents/School_UMD/BPP/Payloads_and_projects/bobot-2/Software/Tim/Elect_test
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/my_project")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/Elect_test")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,13 +34,12 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "C:/Program Files/Raspberry Pi/Pico SDK v1.5.1/gcc-arm-none-eabi/bin/arm-none-eabi-objdump.exe")
+  set(CMAKE_OBJDUMP "C:/Users/Herman/.pico-sdk/toolchain/13_2_Rel1/bin/arm-none-eabi-objdump.exe")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/Tim/Elect_test/build/pico-sdk/cmake_install.cmake")
-  include("C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/Tim/Elect_test/build/build/cmake_install.cmake")
+  include("C:/Users/Herman/Documents/School_UMD/BPP/Payloads_and_projects/bobot-2/Software/Tim/Elect_test/build/pico-sdk/cmake_install.cmake")
 
 endif()
 
@@ -52,5 +51,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/Tim/Elect_test/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/Herman/Documents/School_UMD/BPP/Payloads_and_projects/bobot-2/Software/Tim/Elect_test/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

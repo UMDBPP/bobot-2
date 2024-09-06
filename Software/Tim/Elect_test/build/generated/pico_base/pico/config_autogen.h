@@ -4,8 +4,7 @@
 
 // based on PICO_CONFIG_HEADER_FILES:
 
-#include "C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/Tim/Elect_test/build/pico-sdk/src/boards/include/boards/pico.h"
+#include "C:/Users/Herman/.pico-sdk/sdk/2.0.0/src/boards/include/boards/pico.h"
+#include "C:/Users/Herman/.pico-sdk/sdk/2.0.0/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h"
 
 // based on PICO_RP2040_CONFIG_HEADER_FILES:
-
-#include "C:/Users/Herman/Documents/School UMD/BPP/Payloads and projects/bobot-2/Software/Tim/Elect_test/build/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h"
