@@ -30,18 +30,18 @@ int main() {
     coder2_index = quad_encoder_init2();
     
 
-    gpio_set_irq_callback(&gpio_callback);
+    //gpio_set_irq_callback(&gpio_callback);
     sleep_ms(5000);
     // enables debug print statements in radio methods
     radio.debug_msg_en = 1;
 
     radio.radio_init();
     //SD card object
-    FATFS fs;
+    /*FATFS fs;
     FIL fil;
     FRESULT fr;
-    const char* const filename = "Bobot-2-data.txt";
-    init_sd(fs, fil, &fr, filename);
+    const char* const filename = "Bobot-2-data.txt";*/
+   //init_sd(fs, fil, &fr, filename);
        
 
     while (1){

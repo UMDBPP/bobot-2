@@ -14,9 +14,9 @@
 #include "hardware/irq.h"
 #include "../Elect_test/Libraries/quadrature-decoder/quadrature_decoder.h"
 #include "../Libraries/rp2040-drf1262-lib/SX1262.h"
-#include "f_util.h"
-#include "ff.h"
-#include "hw_config.h"
+//#include "f_util.h"
+//#include "ff.h"
+//#include "hw_config.h"
 
 //GPIO Declarations
 #define SPIO_POCI 0
@@ -249,7 +249,7 @@ void gpio_callback(uint gpio, uint32_t events) {//Radio interupt callback
         radio.clear_irq_status();
     }
 }
-
+/*
 void init_sd(FATFS fs, FIL fil, FRESULT *fr, const char* const filename){//initalize SD card
     *fr = f_mount(&fs, "", 1);//mount SD card
     if (FR_OK != *fr) panic("f_mount error: %s (%d)\n", FRESULT_str(*fr), *fr);//check if it mounted correctly
@@ -283,3 +283,4 @@ void sd_write(FATFS fs, FIL fil, FRESULT *fr, const char* const filename, int32_
     }
     f_unmount("");//unmount SD card
 }
+*/

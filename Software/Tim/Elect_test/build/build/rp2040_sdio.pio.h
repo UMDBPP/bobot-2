@@ -17,6 +17,7 @@
 
 #define sdio_cmd_clk_wrap_target 0
 #define sdio_cmd_clk_wrap 17
+#define sdio_cmd_clk_pio_version 0
 
 static const uint16_t sdio_cmd_clk_program_instructions[] = {
             //     .wrap_target
@@ -46,6 +47,10 @@ static const struct pio_program sdio_cmd_clk_program = {
     .instructions = sdio_cmd_clk_program_instructions,
     .length = 18,
     .origin = -1,
+    .pio_version = 0,
+#if PICO_PIO_VERSION > 0
+    .used_gpio_ranges = 0x0
+#endif
 };
 
 static inline pio_sm_config sdio_cmd_clk_program_get_default_config(uint offset) {
@@ -62,6 +67,7 @@ static inline pio_sm_config sdio_cmd_clk_program_get_default_config(uint offset)
 
 #define sdio_data_rx_wrap_target 0
 #define sdio_data_rx_wrap 4
+#define sdio_data_rx_pio_version 0
 
 static const uint16_t sdio_data_rx_program_instructions[] = {
             //     .wrap_target
@@ -78,6 +84,10 @@ static const struct pio_program sdio_data_rx_program = {
     .instructions = sdio_data_rx_program_instructions,
     .length = 5,
     .origin = -1,
+    .pio_version = 0,
+#if PICO_PIO_VERSION > 0
+    .used_gpio_ranges = 0x0
+#endif
 };
 
 static inline pio_sm_config sdio_data_rx_program_get_default_config(uint offset) {
@@ -93,6 +103,7 @@ static inline pio_sm_config sdio_data_rx_program_get_default_config(uint offset)
 
 #define sdio_data_tx_wrap_target 5
 #define sdio_data_tx_wrap 8
+#define sdio_data_tx_pio_version 0
 
 static const uint16_t sdio_data_tx_program_instructions[] = {
     0x203e, //  0: wait   0 pin, 30                  
@@ -113,6 +124,10 @@ static const struct pio_program sdio_data_tx_program = {
     .instructions = sdio_data_tx_program_instructions,
     .length = 9,
     .origin = -1,
+    .pio_version = 0,
+#if PICO_PIO_VERSION > 0
+    .used_gpio_ranges = 0x0
+#endif
 };
 
 static inline pio_sm_config sdio_data_tx_program_get_default_config(uint offset) {
