@@ -46,7 +46,8 @@ int main() {
 
     while (1){
         read_gps();
-        //read_pres(C1, C2, C3, C4, C5, C6, &TEMP, &P);
+        read_pres(C1, C2, C3, C4, C5, C6, &TEMP, &P);
+        printf("Temp: %d", TEMP);
         //sd_write(fs, fil, &fr, filename, P, TEMP);
         sleep_ms(1000);
     }
