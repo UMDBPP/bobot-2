@@ -1,41 +1,35 @@
-# == DO NEVER EDIT THE NEXT LINES for Raspberry Pi Pico VS Code Extension to work ==
-if(WIN32)
-    set(USERHOME $ENV{USERPROFILE})
-else()
-    set(USERHOME $ENV{HOME})
-endif()
-set(sdkVersion 2.0.0)
-set(toolchainVersion 13_2_Rel1)
-set(picotoolVersion 2.0.0)
-include(${USERHOME}/.pico-sdk/cmake/pico-vscode.cmake)
-# ====================================================================================
 cmake_minimum_required(VERSION 3.13)
 
 # initialize the SDK based on PICO_SDK_PATH
 # note: this must happen before project()
-include(pico_sdk_import.cmake)
+include(./lib/pico-sdk/pico_sdk_init.cmake)
 
 project(Elect_test C CXX ASM)
 
-set(CMAKE_C_STANDARD 11)
+# set(CMAKE_C_STANDARD 11)
 
-set(CMAKE_CXX_STANDARD 17)
+# set(CMAKE_CXX_STANDARD 17)
 
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+# set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # initialize the Raspberry Pi Pico SDK
 pico_sdk_init()
 
+
+
 # rest of your project
 add_executable(main
-    main.cpp
-    ../Elect_test/Libraries/quadrature-decoder/quadrature_decoder.c
-    ../Elect_test/Libraries/rp2040-drf1262-lib/SX1262.cpp
+    src/main.cpp
+    src/helpers.cpp
+    lib/quadrature-decoder/quadrature_decoder.c
+    lib/rp2040-drf1262-lib/SX1262.cpp
     #hw_config.c
 )
 # add_subdirectory(../Elect_test/Libraries/no-OS-FatFS-SD-SDIO-SPI-RPi-Pico/src build)
 
-pico_generate_pio_header(main ${CMAKE_CURRENT_LIST_DIR}/Libraries/quadrature-decoder/quadrature_decoder.pio)
+target_include_directories(main PRIVATE src lib)
+
+pico_generate_pio_header(main ${CMAKE_CURRENT_LIST_DIR}/lib/quadrature-decoder/quadrature_decoder.pio)
 
 # Add libraries
 target_link_libraries(
