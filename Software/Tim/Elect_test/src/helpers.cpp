@@ -1,59 +1,8 @@
-//Libary list
-#include <stdio.h>
-#include <stdlib.h>
-#include "pico/stdlib.h"
-#include <string.h>
-#include <math.h>
-#include "pico/stdlib.h"
-#include "pico/binary_info.h"
-#include "pico/rand.h"
-#include "hardware/i2c.h"
-#include "hardware/spi.h"
-#include "hardware/pwm.h"
-#include "hardware/gpio.h"
-#include "hardware/irq.h"
-#include "../Elect_test/Libraries/quadrature-decoder/quadrature_decoder.h"
-#include "../Libraries/rp2040-drf1262-lib/SX1262.h"
-//#include "f_util.h"
-//#include "ff.h"
-//#include "hw_config.h"
-
-//GPIO Declarations
-#define SPIO_POCI 0
-#define SPIO_CS_RAD 1
-#define SPIO_SCK 2
-#define SPIO_PICO 3
-#define CROSS_PRIMTX_REDRX 4
-#define CROSS_PRIMRX_REDTX 5
-#define SDA 6
-#define SCL 7
-#define D1_pin 8
-#define SPIO_CS_IMU 9
-#define LS2 10
-#define PWM_MC 11
-#define GPS_TX 12
-#define GPS_RX 13
-#define LS1 14
-#define CODER_1A 15  // Pin Base
-#define CODER_1B 16 // Pin Base + 1
-#define CODER_2A 17  // Pin Base
-#define CODER_2B 18 // Pin Base + 1
-#define CODER_3A 19  // Pin Base
-#define CODER_3B 20 // Pin Base + 1
-#define SPIO_CS_SD 21
-#define SW_PIN 22
-#define DIO1_PIN 23
-#define BUSY_PIN 24
-#define RST_PIN 25
-#define TXEN_PIN 26
-#define TIME_PULSE 27
-#define STEP 28
-#define DIRT 29
+#include "helpers.h"
 
 //Radio class
 DRF1262 radio(spi0, SPIO_CS_RAD, SPIO_SCK, SPIO_POCI, SPIO_PICO, TXEN_PIN, DIO1_PIN, BUSY_PIN, SW_PIN, RST_PIN);
-//i2c address
-const int addr_i2c = 0x77;
+
 //Variables
 uint slice_num;
 char radio_buf[100] = {0};
