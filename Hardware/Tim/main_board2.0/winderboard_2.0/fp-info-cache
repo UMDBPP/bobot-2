@@ -1,109 +1,4 @@
-23769395870338176
-Adafruit BNO055
-1X04_ROUND_76
-
-
-0
-4
-4
-Adafruit BNO055
-1X06_ROUND_76
-
-
-0
-6
-6
-Adafruit BNO055
-0805-NO
-
-
-0
-2
-2
-Adafruit BNO055
-0805_10MGAP
-
-
-0
-2
-2
-Adafruit BNO055
-ADAFRUIT_2.5MM
-
-
-0
-0
-0
-Adafruit BNO055
-ADAFRUIT_TEXT_20MM
-
-
-0
-0
-0
-Adafruit BNO055
-BNO055
-
-
-0
-28
-28
-Adafruit BNO055
-CRYSTAL_8X3.8
-8.0x3.8x2.5mm SMT Crystal{return}{return}Source: http://www.abracon.com/Resonators/abs25.pdf
-
-0
-4
-4
-Adafruit BNO055
-FIDUCIAL_1MM
-
-
-0
-1
-1
-Adafruit BNO055
-MOUNTINGHOLE_2.5_PLATED_THICK
-
-
-0
-1
-1
-Adafruit BNO055
-PCBFEAT-REV-040
-Revision Level Field - 40 mil{return}{return}Set version with global board attribute '>REV'
-
-0
-0
-0
-Adafruit BNO055
-SOD-323
-SOD323 (2.5x1.2mm)
-
-0
-2
-2
-Adafruit BNO055
-SOT23-5
-Small Outline Transistor - 5 Pin
-
-0
-5
-5
-Adafruit BNO055
-SOT23-WIDE
-
-
-0
-3
-3
-Adafruit BNO055
-_0805MP
-0805 MicroPitch
-
-0
-2
-2
+23750379960862563
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -118,6 +13,20 @@ audio belton reverb
 0
 7
 7
+BAT-HLD-001
+BAT_BAT-HLD-001
+
+
+0
+3
+3
+BNO055
+BNO055
+
+
+0
+14
+14
 Battery
 BatteryClip_Keystone_54_D16-19mm
 Battery clip for batteries with a diameter between 16-19 mm: https://www.keyelco.com/product.cfm/product_id/826
@@ -54753,6 +54662,13 @@ SMD SMT ceramic resonator filter filter hand-soldering
 0
 3
 3
+DEV-16771
+MODULE_DEV-16771
+
+
+0
+65
+65
 Diode_SMD
 D_0201_0603Metric
 Diode SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator
@@ -64753,6 +64669,13 @@ LED_THT
 LED_VCCLite_5381H7_6.35x6.35mm
 Yellow 5381 Series LED VCCLite https://vcclite.com/wp-content/uploads/wpallimport/files/files/5381Series.pdf http://static.vcclite.com/pdf/Mounting%20Hole%20Pattern%202.pdf
 Yellow 5381 Series LED
+0
+2
+2
+ML414H_IV01E
+SEIKO_ML414H_IV01E
+
+
 0
 2
 2

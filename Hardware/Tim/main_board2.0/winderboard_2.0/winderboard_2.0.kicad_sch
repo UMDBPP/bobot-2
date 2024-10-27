@@ -8899,10 +8899,6 @@
 		(uuid "1abb75d9-412a-4855-907a-92dd04af1f05")
 	)
 	(no_connect
-		(at 179.07 245.11)
-		(uuid "1d40052b-b3d9-45f5-aa3e-6dad7f86f39d")
-	)
-	(no_connect
 		(at 106.68 54.61)
 		(uuid "21800ff9-c9da-4453-9726-d605ddd145bb")
 	)
@@ -8913,6 +8909,10 @@
 	(no_connect
 		(at 106.68 44.45)
 		(uuid "410cd8cf-f2e0-4911-8fea-160375abab3c")
+	)
+	(no_connect
+		(at 179.07 250.19)
+		(uuid "5797bece-873d-4d8a-a094-5ddf1cf10bfa")
 	)
 	(no_connect
 		(at 66.04 44.45)
@@ -8939,6 +8939,10 @@
 		(uuid "c560914c-a757-4d5f-a7a4-d0d01023eeb4")
 	)
 	(no_connect
+		(at 57.15 191.77)
+		(uuid "cacf99f2-a541-4f7a-aa9b-2507731ddbc4")
+	)
+	(no_connect
 		(at 106.68 46.99)
 		(uuid "d3a99fc2-84d3-4900-ac37-2936b57557c8")
 	)
@@ -8949,6 +8953,10 @@
 	(no_connect
 		(at 106.68 29.21)
 		(uuid "fbb28eec-b8d3-453f-8550-f494e6214f92")
+	)
+	(no_connect
+		(at 57.15 189.23)
+		(uuid "fc2a7d7d-f1db-44f4-8d5b-cc356326abc9")
 	)
 	(wire
 		(pts
@@ -11792,28 +11800,6 @@
 			)
 		)
 	)
-	(global_label "IMU_SCL"
-		(shape input)
-		(at 179.07 250.19 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "2ac2f093-188d-4c6b-ad9b-2010fc6f89ce")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 168.2229 250.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "I2C_SCL2"
 		(shape input)
 		(at 26.67 77.47 0)
@@ -12179,6 +12165,28 @@
 		(uuid "541563c6-73a5-4aaa-8e29-71b737ce009b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 25.0758 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "IMU_SDA"
+		(shape input)
+		(at 179.07 245.11 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "552aad55-b306-46a1-9c79-57abf393b9a9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 168.1624 245.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12624,6 +12632,28 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "IMU_SCL"
+		(shape input)
+		(at 179.07 247.65 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "90b23976-e2d0-48dc-ae4b-50a9d282aa42")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 168.2229 247.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -13354,28 +13384,6 @@
 			)
 		)
 	)
-	(global_label "IMU_SDA"
-		(shape input)
-		(at 179.07 247.65 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "f01d6420-209f-4786-bab8-1b553f4d7f52")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 168.1624 247.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "RTC_Batt"
 		(shape input)
 		(at 41.91 137.16 180)
@@ -13536,7 +13544,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
 			(at 278.13 110.49 0)
 			(effects
 				(font
@@ -13915,7 +13923,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_EH_B3B-EH-A_1x03_P2.50mm_Vertical"
 			(at 172.72 147.32 0)
 			(effects
 				(font
@@ -15835,7 +15843,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Loop_D2.54mm_Drill1.5mm_Beaded"
 			(at 83.82 251.46 0)
 			(effects
 				(font
@@ -17607,7 +17615,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "BNO055:BNO055"
 			(at 184.15 242.57 0)
 			(effects
 				(font
@@ -21378,7 +21386,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
 			(at 379.73 50.8 0)
 			(effects
 				(font
