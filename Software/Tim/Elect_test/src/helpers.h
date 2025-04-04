@@ -16,9 +16,9 @@
 #include "hardware/gpio.h"
 #include "hardware/irq.h"
 #include "../lib/rp2040-drf1262-lib/SX1262.h"
-//#include "f_util.h"
-//#include "ff.h"
-//#include "hw_config.h"
+#include "f_util.h"
+#include "ff.h"
+#include "hw_config.h"
 
 extern "C" {
 #include "../lib/quadrature-decoder/quadrature_decoder.h"
@@ -78,7 +78,9 @@ int32_t quad_encoder_init2();
 uint PWM_init();
 void motor_speed_dir_set(bool dir, int speed);
 void teather_dis(bool dir, int dis, int speed);
-void teather_dis(bool dir, int dis, int speed);
 void gpio_callback(uint gpio, uint32_t events);
+void init_sd(FATFS fs, FIL fil, FRESULT *fr, const char* const filename);
+void sd_write(FATFS fs, FIL fil, FRESULT *fr, const char* const filename, int32_t P, int32_t TEMP);
+void init_imu();
 
 #endif
