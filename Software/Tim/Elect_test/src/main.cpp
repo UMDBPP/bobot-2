@@ -30,25 +30,34 @@ int main() {
     coder2_index = quad_encoder_init2();
     
 
-    //gpio_set_irq_callback(&gpio_callback);
+    gpio_set_irq_callback(&gpio_callback);
     sleep_ms(5001);
     // enables debug print statements in radio methods
     radio.debug_msg_en = 1;
 
     radio.radio_init();
     //SD card object
-    /*FATFS fs;
+    FATFS fs;
     FIL fil;
     FRESULT fr;
-    const char* const filename = "Bobot-2-data.txt";*/
-   //init_sd(fs, fil, &fr, filename);
+    const char* const filename = "Bobot-2-data.txt";
+    init_sd(fs, fil, &fr, filename);
        
 
+    gpio_init(SPIO_CS_IMU);
+    gpio_set_dir(SPIO_CS_IMU, GPIO_OUT);
+    gpio_put(SPIO_CS_IMU, 1);
+
+    uint16_t imu_dummy_byte = 0x00; 
+    uint8_t imu_buffer[2];
+    spi_read_blocking(spi0, imu_dummy_byte, imu_buffer, sizeof(imu_buffer));
+    printf("Wellll: %d", imu_buffer[0]);
+
     while (1){
-        read_gps();
-        read_pres(C1, C2, C3, C4, C5, C6, &TEMP, &P);
-        printf("Temp: %d", TEMP);
         //sd_write(fs, fil, &fr, filename, P, TEMP);
+        read_pres(C1,C2,C3,C4,C5,C6,&TEMP,&P);
+        printf("Temp: %d Pressure: %d \n", TEMP, P);
+
         sleep_ms(1000);
     }
 

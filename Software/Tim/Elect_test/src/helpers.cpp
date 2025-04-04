@@ -69,6 +69,9 @@ void read_pres(uint16_t C1, uint16_t C2, uint16_t C3, uint16_t C4, uint16_t C5, 
     int32_t dT;
     int64_t OFF;
     int64_t SENS;
+    int64_t SENS2;
+    int32_t T2;
+    int64_t OFF2;
 
     i2c_write_blocking(i2c1, addr_i2c, &D1_cmd, sizeof(D1_cmd), false);//Write command for D1
     sleep_ms(100);//Let sensor retreive
@@ -82,12 +85,36 @@ void read_pres(uint16_t C1, uint16_t C2, uint16_t C3, uint16_t C4, uint16_t C5, 
     i2c_read_blocking(i2c1, addr_i2c, D2t, 3, false);//Read data
     D2 = 0x00000000|(D2t[0]<<16)|(D2t[1]<<8)|D2t[2];//Place 24 bit pressure value in 32 bit uint from 3 reac bits
 
-    dT = D2 - (C5 * 256);//Calc Temp diff
+    
+    //Pressure Compensation
+    dT = D2 - (C5 * 256);
+    *TEMP = 2000 + ((dT*C6)/8388608);
+    if (*TEMP < 2000){
+        T2 = 3 * pow(dT,2)/8589934592;
+        OFF2 = 61 * pow((*TEMP-2000),2)/16;
+        SENS2 = 29 * pow((dT - 2000),2)/16;
+        }
+    else if(*TEMP < -1500){
+        OFF2 += 17 * pow((dT + 1500),2);
+        SENS2 += 9 * pow((dT + 1500),2);
+        }
+    else{
+       T2 = 5 * pow(dT,2)/274877906944;
+       OFF2 = 0;
+       SENS2 = 0;
+    }
+    *TEMP = *TEMP - T2;
+    OFF = OFF - OFF2;
+    SENS = SENS - SENS2;
+    
+    
+    /*dT = D2 - (C5 * 256);//Calc Temp diff
     *TEMP = 2000 + ((dT*C6)/8388608);//Calc temp
     
     OFF =  C2*131072 + ((C4*dT)/64);//Calc pressure offset
     SENS = (C1*65536) + ((C3*dT)/128);//Calculate sens
     *P = -(D1*SENS/2097152 - OFF)/32768;//Calculate pressure
+    */
 }
 
 void init_gps(){//Start UART for GPS
@@ -198,7 +225,7 @@ void gpio_callback(uint gpio, uint32_t events) {//Radio interupt callback
         radio.clear_irq_status();
     }
 }
-/*
+
 void init_sd(FATFS fs, FIL fil, FRESULT *fr, const char* const filename){//initalize SD card
     *fr = f_mount(&fs, "", 1);//mount SD card
     if (FR_OK != *fr) panic("f_mount error: %s (%d)\n", FRESULT_str(*fr), *fr);//check if it mounted correctly
@@ -232,4 +259,7 @@ void sd_write(FATFS fs, FIL fil, FRESULT *fr, const char* const filename, int32_
     }
     f_unmount("");//unmount SD card
 }
-*/
+
+void init_imu(){
+
+}
