@@ -175,6 +175,8 @@ void loop(void) {
   myFile.print(load,5);
   myFile.print(",");
   myFile.println(altCalc(pressure.pressure));
+  //Test
+  Serial.println(altCalc(pressure.pressure));
 
   float deployment_altitude = 30000;
   if (deployment_altitude == altCalc(pressure.pressure)){
@@ -194,18 +196,23 @@ void writeVectorToSD(imu::Vector<3> v) {
   myFile.print(v.z()); myFile.print(",");
 }
 void servo_run(void){
-  s_a.write(30);
-  s_b.write(73);
+  s_a.attach(3);
+  s_b.attach(2);
+
+  //closed
+  s_a.write(70);
+  s_b.write(30);
 
   delay(1000);
   //open
-  s_a.write(50);
-  s_b.write(55);
+  s_a.write(30);
+  s_b.write(70);
 
   //closed
   delay(1000);
-  s_a.write(30);
-  s_b.write(73);
+  s_a.write(70);
+  s_b.write(30);
+
 }
 
 
