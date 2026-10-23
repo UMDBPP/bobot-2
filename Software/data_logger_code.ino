@@ -7,9 +7,6 @@
 #include "RTClib.h"
 #include <Servo.h>
 
-Servo s_a; 
-Servo s_b;
-
 #define REF_OUT 23
 #define LOAD_A 0.125f       // kg
 #define ANALOG_VAL_A 200    // analog reading taken with load A
@@ -20,75 +17,71 @@ Servo s_b;
 
 RTC_PCF8523 rtc;
 Adafruit_MS8607 ms8607;
+Adafruit_BNO055 bno = Adafruit_BNO055(55, 0x28, &Wire);
+Servo s_a; 
+Servo s_b;
+File myFile;
 
 // Configuration
 const int chipSelect = 10; // Use BUILTIN_SDCARD for Teensy 4.0 onboard slot
-const uint16_t SAMPLERATE_MS = 100;
+const uint16_t SAMPLERATE_MS = 500;
 
-float analogValueAverage = 0;
+float analogValueAverage = analogRead(REF_OUT);
 unsigned long lastReadTime = 0; 
 int timeBetweenReadings = 200; // Reading every 200 ms
 int servo_flag = 0;
 
-Adafruit_BNO055 bno = Adafruit_BNO055(55, 0x28, &Wire);
-File myFile;
-float LAUNCH_ALT = 0;  // CHANGE THIS VARIABLE BEFORE LAUNCH !!!!!!! =====================================================
-float LAUNCH_P;
-float LAUNCH_T;
+// Altitude parameters
+float LAUNCH_ALT = 20; 
+float LAUNCH_P = 1026;
+float LAUNCH_T = 280;
+
+
+bool done = false;
 
 
 void setup(void) {
   Serial.begin(115200);
   while (!Serial && millis() < 4000); 
-
-  // 1. SD Card Setup
-
-
-  // 2. BNO055 Setup
+  
+  // BNO055 Setup
   if (!bno.begin()) {
     Serial.println("BNO055 NOT detected!");
     while (1);
   }
+  
+  // RTC Setup
   if (! rtc.begin()) {
     Serial.println("Couldn't find RTC");
     while (1);
   }
+  Serial.println("RTC is NOT initialized, let's set the time!");
+  rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+  rtc.start();
+  
+  //MS8607 Setup
   if (!ms8607.begin()){
     Serial.println("Failed to begin MS8607");
     while(1);
   }
+  ms8607.setHumidityResolution(MS8607_HUMIDITY_RESOLUTION_OSR_8b);
+  
+  // SD Card Setup
   if (!SD.begin(chipSelect)) {
     Serial.println("SD Initialization FAILED!");
     while (1);
   }
 
+  //Setting Servos to closed positon
+  s_a.attach(3);
+  s_b.attach(2);
 
-  ms8607.setHumidityResolution(MS8607_HUMIDITY_RESOLUTION_OSR_8b);
-  switch (ms8607.getHumidityResolution()){
-    case MS8607_HUMIDITY_RESOLUTION_OSR_12b: Serial.println("12-bit"); break;
-    case MS8607_HUMIDITY_RESOLUTION_OSR_11b: Serial.println("11-bit"); break;
-    case MS8607_HUMIDITY_RESOLUTION_OSR_10b: Serial.println("10-bit"); break;
-    case MS8607_HUMIDITY_RESOLUTION_OSR_8b: Serial.println("8-bit"); break;
-  }
-  switch (ms8607.getPressureResolution()){
-    case MS8607_PRESSURE_RESOLUTION_OSR_256: Serial.println("256"); break;
-    case MS8607_PRESSURE_RESOLUTION_OSR_512: Serial.println("512"); break;
-    case MS8607_PRESSURE_RESOLUTION_OSR_1024: Serial.println("1024"); break;
-    case MS8607_PRESSURE_RESOLUTION_OSR_2048: Serial.println("2048"); break;
-    case MS8607_PRESSURE_RESOLUTION_OSR_4096: Serial.println("4096"); break;
-    case MS8607_PRESSURE_RESOLUTION_OSR_8192: Serial.println("8192"); break;
-  }
-  // if (! rtc.initialized() || rtc.lostPower()) {
-  //   Serial.println("RTC is NOT initialized, let's set the time!");
-  //   rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
-  // }
-  Serial.println("RTC is NOT initialized, let's set the time!");
-  rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
-  rtc.start();
+  s_a.write(70);
+  s_b.write(30);
 
-  // 3. File Initialization & Headers
-  // We use .txt as requested. The format is CSV-style inside the text file. 
-  myFile = SD.open("datalog1.txt ", FILE_WRITE);
+
+  // File Initialization & Headers
+  myFile = SD.open("datalog_ns146_log.txt", FILE_WRITE);
   if (myFile) {
     // Write all headers on the first line
     myFile.print("Date,");
@@ -105,9 +98,6 @@ void setup(void) {
     myFile.print("Analog_Value, ");
     myFile.print("Load_Value, ");
     myFile.println("Altitude");
-
-
-
     myFile.flush(); 
     Serial.println("Logging started to datalog.txt...");
   } else {
@@ -116,12 +106,12 @@ void setup(void) {
 
   bno.setExtCrystalUse(true);
 
-  s_a.attach(3);
-  s_b.attach(2);
-
 }
 
 void loop(void) {
+  
+  //When Servos open, stop the loop
+  if (done) return;
   if (!myFile) return;
 
   // Fetch all vectors from the sensor
@@ -132,9 +122,10 @@ void loop(void) {
   imu::Vector<3> accel  = bno.getVector(Adafruit_BNO055::VECTOR_ACCELEROMETER);
   imu::Vector<3> grav   = bno.getVector(Adafruit_BNO055::VECTOR_GRAVITY);
   int8_t temp           = bno.getTemp();
+  
   DateTime now = rtc.now();
   sensors_event_t temp1, pressure, humidity;
-  ms8607.getEvent(&temp1,&pressure, &humidity);
+  ms8607.getEvent(&pressure, &temp1, &humidity);
 
   // --- Start Writing One Row of Data ---
   myFile.print(now.year(), DEC);
@@ -166,21 +157,27 @@ void loop(void) {
   myFile.print(humidity.relative_humidity);
   myFile.print(",");
 
-  int analogValue = analogRead(REF_OUT);
-  analogValueAverage = 0.99 * analogValueAverage + 0.01 * analogValue;
-  float load = analogToLoad(analogValueAverage);
 
+
+  // Load Sensor  
+  analogValueAverage = 0.99 * analogValueAverage + 0.01 *analogRead(REF_OUT);
+  float load = analogToLoad(analogValueAverage);
   myFile.print(analogValueAverage);
   myFile.print(",");
   myFile.print(load,5);
   myFile.print(",");
-  myFile.println(altCalc(pressure.pressure));
-  //Test
-  Serial.println(altCalc(pressure.pressure));
 
+  //Altitude
+  float alt = altCalc(pressure.pressure);
+  myFile.println(alt);
+  //Test
+  Serial.println(alt);
+
+  //servos open at particular altitude
   float deployment_altitude = 30000;
-  if (deployment_altitude == altCalc(pressure.pressure)){
+  if (deployment_altitude <= alt){
     servo_run();
+    done = true;
   }
   // Ensure data is saved
   myFile.flush();
@@ -196,8 +193,6 @@ void writeVectorToSD(imu::Vector<3> v) {
   myFile.print(v.z()); myFile.print(",");
 }
 void servo_run(void){
-  s_a.attach(3);
-  s_b.attach(2);
 
   //closed
   s_a.write(70);
@@ -214,7 +209,6 @@ void servo_run(void){
   s_b.write(30);
 
 }
-
 
 // Custom map function for floats
 float mapfloat(float x, float in_min, float in_max, float out_min, float out_max) {
