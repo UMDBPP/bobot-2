@@ -6,6 +6,7 @@
 #include <SPI.h>
 #include "RTClib.h"
 #include <Servo.h>
+#include "HX711.h"
 
 #define REF_OUT 23
 #define LOAD_A 0.125f       // kg
@@ -167,15 +168,16 @@ void loop(void) {
   // Load Sensor  
   analogValueAverage = 0.99 * analogValueAverage + 0.01 *analogRead(REF_OUT);
   // float load = analogToLoad(analogValueAverage);
+  long reading;
   if (scale.is_ready()) {
-    long reading = scale.read();
-    Serial.print("HX711 reading: ");
-    Serial.println(reading);
-  } else {
-    Serial.println("HX711 not found.");
-  }
+    reading = scale.read();
+    Serial.print("HX711 reading: ");
+    Serial.println(reading);
+  } else {
+      Serial.println("HX711 not found.");
+  }
 
-  delay(1000);
+  delay(1000);
   myFile.print(analogValueAverage);
   myFile.print(",");
   myFile.print(reading);
