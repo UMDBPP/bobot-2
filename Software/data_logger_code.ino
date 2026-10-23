@@ -31,6 +31,11 @@ unsigned long lastReadTime = 0;
 int timeBetweenReadings = 200; // Reading every 200 ms
 int servo_flag = 0;
 
+//load
+const int LOADCELL_DOUT_PIN = 7;
+const int LOADCELL_SCK_PIN = 8;
+HX711 scale;
+
 // Altitude parameters
 float LAUNCH_ALT = 20; 
 float LAUNCH_P = 1026;
@@ -78,8 +83,8 @@ void setup(void) {
 
   s_a.write(70);
   s_b.write(30);
-
-
+  //load
+  scale.begin(LOADCELL_DOUT_PIN, LOADCELL_SCK_PIN);
   // File Initialization & Headers
   myFile = SD.open("datalog_ns146_log.txt", FILE_WRITE);
   if (myFile) {
@@ -161,10 +166,19 @@ void loop(void) {
 
   // Load Sensor  
   analogValueAverage = 0.99 * analogValueAverage + 0.01 *analogRead(REF_OUT);
-  float load = analogToLoad(analogValueAverage);
+  // float load = analogToLoad(analogValueAverage);
+  if (scale.is_ready()) {
+    long reading = scale.read();
+    Serial.print("HX711 reading: ");
+    Serial.println(reading);
+  } else {
+    Serial.println("HX711 not found.");
+  }
+
+  delay(1000);
   myFile.print(analogValueAverage);
   myFile.print(",");
-  myFile.print(load,5);
+  myFile.print(reading);
   myFile.print(",");
 
   //Altitude
@@ -174,7 +188,7 @@ void loop(void) {
   Serial.println(alt);
 
   //servos open at particular altitude
-  float deployment_altitude = 30000;
+  float deployment_altitude = 26000;
   if (deployment_altitude <= alt){
     servo_run();
     done = true;
